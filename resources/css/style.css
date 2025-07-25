@@ -1,0 +1,50 @@
+:root{
+    --background: #070709;
+    --primary: #AE1918;
+    --text-primary: #FFFFFF;
+    --text-secondary: #808080;
+    --heading: #F42C1D;
+}
+
+body{
+    background: var(--background);
+}
+
+.title h1{
+    color: var(--heading);
+    letter-spacing: 4px;
+}
+.title p{
+    letter-spacing: 4px;
+}
+
+#find_anime::placeholder{
+  color: var(--text-secondary);
+}
+
+/* Anime Cards Start */
+
+.anime-card {
+  background-color: #111111;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.anime-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(244, 44, 29, 0.3);
+}
+
+.text-heading {
+  color: var(--heading);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #c92422;
+}
+
+/* Anime Cards Ends */

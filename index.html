@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aniblur</title>
+
+    <!-- Bootstrap Link CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./resources/css/style.css" type="text/css">
+</head>
+<body>
+    
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8">
+                <div class="text-center text-light title mb-4">
+                    <h1 class="display-4 fw-semibold">Aniblur</h1>
+                    <p class="text-muted">Test your anime skills</p>
+                </div>
+
+                <div id="current-page" class="text-center">
+                    <div class="input-group input-group-lg mb-4 mx-auto">
+                        <input
+                            type="text"
+                            class="form-control bg-dark text-light border-secondary"
+                            name="find_anime"
+                            id="find_anime"
+                            placeholder="Search anime..."
+                        />
+                        <button id="animeFindBtn" class="btn btn-outline-light" type="button">
+                            Search
+                        </button>
+                    </div>
+                </div>
+
+                <div class="p-5 my-4 text-center border border-secondary rounded-3 shadow-sm" id="placeholder">
+                    <h2 class="text-secondary">Find your anime</h2>
+                </div>
+
+                <div class="row mt-5" id="anime-rows">
+                    <!-- Anime cards will be appended here -->
+                </div>
+                <div class="row mt-5" id="closest-results-row">
+                    <!-- Anime cards will be appended here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap Link JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+    <script type="module" src="./app.js"></script>
+</body>
+</html>

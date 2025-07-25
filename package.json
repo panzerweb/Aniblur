@@ -1,0 +1,11 @@
+{
+  "name": "aniblur",
+  "version": "1.0.0",
+  "description": "An anime character guessing game made with HTML, CSS, and JavaScript supported by Jikan API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Panzerweb",
+  "license": "ISC"
+}
