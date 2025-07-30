@@ -97,6 +97,7 @@ export function animeFind(){
                                     <span><strong>Status:</strong> ${anime.status} | </span>
                                     <span><strong>Score:</strong> ${anime.score}</span><br>
                                     <a href="${anime.url}" target="_blank" class="btn btn-sm btn-outline-primary mt-2">More Info</a>
+                                    <a href="./resources/pages/guess.html?${anime.mal_id}" class="btn btn-warning mt-2">Play Game</a>
                                 </div>
                             </div>
                         </div>
