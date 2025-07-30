@@ -60,7 +60,7 @@ export function animeFind(){
                                     <p class="mb-1"><strong>Score:</strong> ${result.score}</p>
                                     <p class="mb-1"><strong>Type:</strong> ${result.type}</p>
                                     <a href="${result.url}" target="_blank" class="btn btn-primary mt-2">More Info</a>
-                                    <a href="./resources/pages/guess.html?${result.mal_id}" target="_blank" class="btn btn-warning mt-2">Play Game</a>
+                                    <a href="./resources/pages/guess.html?${result.mal_id}" class="btn btn-warning mt-2">Play Game</a>
                                 </div>
                             </div>
                         </div>
