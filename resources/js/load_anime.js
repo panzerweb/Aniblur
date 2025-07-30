@@ -13,6 +13,8 @@ export function animeFind(){
     .then(response => response.json())
     .then(animes => {
 
+        console.log(animes);
+
         animeList.innerHTML = '';
         closestResult.innerHTML = '';
 
@@ -66,6 +68,9 @@ export function animeFind(){
                 </div>
             </div>
             `;
+
+            // Reset input field
+            findAnime.value = '';
         }
         // Show Closest Results (excluding exact match)
         if (animes.data && animes.data.length > 0 && animeInput !== '') {
@@ -98,6 +103,8 @@ export function animeFind(){
                     </div>
                     `;
                 });
+                // Reset input field
+                findAnime.value = '';
             }
         }
         // Handle empty input
@@ -106,6 +113,7 @@ export function animeFind(){
             console.log("No inputs");
             return;
         }
+
     })
     .catch(error => {
         console.error("Error fetching anime:", error);
