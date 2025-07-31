@@ -11,11 +11,6 @@ let resetAnimeButton = document.getElementById("reset-anime-button");
 let urlParams = window.location.search;
 let animeId = urlParams.replace('?', '');
 // Check if animeId is valid
-if (!animeId || isNaN(animeId)) {
-    console.error("Invalid anime ID:", animeId);
-    alert("Invalid anime ID. Please check the URL.");
-    throw new Error("Invalid anime ID");
-}
 console.log(animeId);
 
 // Data for score
