@@ -47,6 +47,7 @@ export function loadCharacterOnDom(){
             // Filter characters with more than 1000 favorites
             // and select a random one
             // Ensure that the character has not been guessed before
+            // MODIFY THE 1000 to higher number for testing purpose to shorten the list to test fast
             const famousChar = characters.data.filter((character) => {
                 return character.favorites > 1000 && !guessedCharacters[animeId].includes(character.character.name);
             });

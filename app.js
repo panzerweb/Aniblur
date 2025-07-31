@@ -16,7 +16,13 @@ let resetAnimeButton = document.getElementById("reset-anime-button");
 if (resetAnimeButton) {
     resetAnimeButton.addEventListener("click", () => {
         resetAnime();
-        alert("Anime characters have been reset. You can start guessing again!");
+        Swal.fire({
+            title: "Congratulations!",
+            text: "Anime characters have been reset. You can start guessing again!",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1000
+        });
         setTimeout(() => {
             window.location.reload();;
         }, 1500);
@@ -25,7 +31,21 @@ if (resetAnimeButton) {
 if (resetButton) {
     resetButton.addEventListener("click", () => {
         resetScore();
-        alert("Your score has been reset. You can start guessing again!");
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+            });
+            Toast.fire({
+            icon: "success",
+            title: `Score has been reset!`,
+        });
     });
 }
 
