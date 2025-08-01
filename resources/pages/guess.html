@@ -32,7 +32,7 @@
                 </div>
 
                 <span>
-                    <button class="btn btn-success my-2 d-none" id="reset-button">Reset Score</button>
+                    <button class="btn btn-success my-2 d-none" id="reset-button">Reset Score And Level</button>
                 </span>
                 <span>
                     <button class="btn btn-success my-2 d-none" id="reset-anime-button">Reset Anime</button>
@@ -40,6 +40,19 @@
             </div>
             
         </div>
+    </div>
+
+    <!-- Score and Ranking -->
+    <div class="position-fixed bottom-0 end-0 m-5 py-3 px-5 rounded-3 bg-dark d-flex flex-column border border-secondary shadow-sm" id="score-wrapper">
+        <strong class="text-secondary">Your Total Score:
+            <span id="total-score" class="text-warning">0</span>
+        </strong>
+        <strong class="text-secondary">Level:
+            <span id="level" class="text-warning">0</span>
+        </strong>
+        <strong class="text-secondary">Rank:
+            <span id="rank" class="text-warning">Noob</span>
+        </strong>
     </div>
 
 

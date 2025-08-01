@@ -1,6 +1,8 @@
 // Points
-let score = 0; 
+let score = parseInt(localStorage.getItem("current-score")) || 0; 
+let level = parseInt(localStorage.getItem("player-level")) || 0;
 let progressBar = document.getElementById("progress-bar");
+let pointsIncrement = 5;
 
 // Character wrapper and other elements
 let characterWrapper = document.getElementById("character-wrapper-game");
@@ -16,7 +18,7 @@ console.log(animeId);
 // Data for score
 const playerData = {
     totalScore: score,
-    animeId: animeId
+    playerLevel: level
 }
 
 // Array to hold guessed characters
@@ -192,10 +194,16 @@ export function guessChar(input, answer, character){
 
         // Update score and progress bar
         // Increase score by 2 points
-        score += 2;
+        score += pointsIncrement;
         
         playerData.totalScore = score;
         localStorage.setItem("current-score", JSON.stringify(playerData.totalScore));
+
+        // Level up and reset to zero
+        if (playerData.totalScore > 100) {
+            resetScoreIfLevelUp();
+            levelUp();
+        }
         
         //Call Loading function to load next character
         loadCharacterOnDom();
@@ -218,15 +226,31 @@ export function guessChar(input, answer, character){
     }
 }
 
+function levelUp(){
+    level++;
+
+    localStorage.setItem("player-level", JSON.stringify(level));
+}
+function resetScoreIfLevelUp(){
+    score = 0;
+    playerData.totalScore = score;
+    localStorage.setItem("current-score", JSON.stringify(score));
+    console.log(playerData.totalScore);
+
+    return score;
+}
+
 // RESET FUNCTIONS START
 // This function resets the anime characters and score
 export function resetAnime() {
     // Clear the guessed characters for the current anime
     localStorage.removeItem("guessed-" + animeId);
 }
-export function resetScore() {
+export function resetScoreAndLevel() {
     score = 0;
+    level = 0;
     localStorage.setItem("current-score", JSON.stringify(score));
+    localStorage.setItem("player-level", JSON.stringify(level));
     // Reset the progress bar
     progressBar.style.width = `${score}%`;
     guessedCharacters.length = 0; // Clear the guessed characters array
