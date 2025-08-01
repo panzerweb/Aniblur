@@ -183,7 +183,7 @@ export function guessChar(input, answer, character){
             });
             Toast.fire({
             icon: "success",
-            title: `Correct! You guessed it right. +${2} points`,
+            title: `Correct! You guessed it right. +${pointsIncrement} points`,
         });
 
         // Add the guessed character to the array
