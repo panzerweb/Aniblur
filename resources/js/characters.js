@@ -2,7 +2,12 @@
 let score = parseInt(localStorage.getItem("current-score")) || 0; 
 let level = parseInt(localStorage.getItem("player-level")) || 0;
 let progressBar = document.getElementById("progress-bar");
-let pointsIncrement = 5;
+
+let max = 5;
+let min = 2;
+let pointsIncrement = parseInt(localStorage.getItem("points-count")) || Number((Math.random() * (max - min) + min).toFixed(3));
+let favoritesRange = Number(localStorage.getItem("favorite-range"));
+if (isNaN(favoritesRange)) favoritesRange = 1000;
 
 // Character wrapper and other elements
 let characterWrapper = document.getElementById("character-wrapper-game");
@@ -46,9 +51,9 @@ export function loadCharacterOnDom(){
             // Ensure that the character has not been guessed before
             // MODIFY THE 1000 to higher number for testing purpose to shorten the list to test fast
             const famousChar = characters.data.filter((character) => {
-                return character.favorites > 1000 && !guessedCharacters[animeId].includes(character.character.name);
+                return character.favorites > favoritesRange && !guessedCharacters[animeId].includes(character.character.name);
             });
-
+            // console.log(favoritesRange)
             const getRandomCharacters = Math.floor(Math.random() * famousChar.length);
 
             // console.log("Famous Characters:", famousChar);
@@ -58,7 +63,7 @@ export function loadCharacterOnDom(){
             // console.log(randomCharacter);
             // If no characters are left to guess, show a message
             if (famousChar.length === 0) {
-                console.log("No more characters to guess!");
+                console.log("No characters found matching the current favorites range.");
                 characterWrapper.innerHTML = `
                     <div class="shadow-lg p-3 mb-5 rounded">
                         <h1 class="text-center text-light">No more characters to guess!</h1>
@@ -225,21 +230,44 @@ export function guessChar(input, answer, character){
         });
     }
 }
-
 function levelUp(){
     level++;
+    favoritesRange = Math.max(favoritesRange - 200, 0);
 
+    const randomIncreaseOfPoints = Number((Math.random() * (max - min) + min).toFixed(3));
+    pointsIncrement += randomIncreaseOfPoints;
+    console.log(pointsIncrement);
+    popUpWhenLevelUp(level);
+
+    localStorage.setItem("points-count", JSON.stringify(pointsIncrement));
+    localStorage.setItem("favorite-range", JSON.stringify(favoritesRange));
     localStorage.setItem("player-level", JSON.stringify(level));
 }
 function resetScoreIfLevelUp(){
     score = 0;
     playerData.totalScore = score;
     localStorage.setItem("current-score", JSON.stringify(score));
-    console.log(playerData.totalScore);
+    // console.log(playerData.totalScore);
 
     return score;
 }
-
+function popUpWhenLevelUp(level){
+    Swal.fire({
+        title: `🎉 Congratulations!`,
+        html: `You've just leveled up to <strong>Level ${level}</strong>! 🚀<br><br>Keep going and aim higher!`,
+        icon: 'success',
+        confirmButtonText: 'Awesome!',
+        background: '#f0f9ff',
+        color: '#1e293b',
+        confirmButtonColor: '#3b82f6',
+        backdrop: `
+            rgba(0,0,123,0.4)
+            url("https://media.tenor.com/3hDpd2qCXBcAAAAi/party-popper-confetti.gif")
+            left top
+            no-repeat
+        `
+    });
+}
 // RESET FUNCTIONS START
 // This function resets the anime characters and score
 export function resetAnime() {
