@@ -78,10 +78,14 @@ if (!localStorage.getItem("current-score")) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    let max = 5;
+    let min = 2;
     // Set Interval to accurately update the data of score
     setInterval(() => {
         localStorage.getItem("current-score") || localStorage.setItem("current-score", JSON.stringify(0));
         localStorage.getItem("player-level") || localStorage.setItem("player-level", JSON.stringify(0));
+        localStorage.getItem("favorite-range") || localStorage.setItem("favorite-range", JSON.stringify(1000));
+        localStorage.getItem("points-count") || localStorage.setItem("points-count", JSON.stringify(Number((Math.random() * (max - min) + min).toFixed(3))));
 
         const currentLevel = JSON.parse(localStorage.getItem("player-level"));
         const totalScore = JSON.parse(localStorage.getItem("current-score"));
